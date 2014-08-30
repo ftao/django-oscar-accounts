@@ -77,7 +77,7 @@ class Account(models.Model):
     primary_user = models.ForeignKey('auth.User', related_name="accounts",
                                      null=True, blank=True,
                                      on_delete=models.SET_NULL)
-    secondary_users = models.ManyToManyField('auth.User', blank=True)
+    secondary_users = models.ManyToManyField('auth.User', related_name="accounts_as_secondary_user", blank=True)
 
     # Track the status of a account - this is often used so that expired
     # account can have their money transferred back to some parent account and
